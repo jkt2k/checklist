@@ -17,6 +17,10 @@ def list_all_items():
     for list_item in checklist:
         print(list_item)
 
+def mark_complete(index):
+    print("Item marked as complete.")
+    checklist[index]=checklist[index]+" [Complete]"
+
 def test():
     create("item1")
     create("item2")
@@ -29,7 +33,7 @@ def test():
     list_all_items()
 
 while running:
-    selection=input("Create=C, Read=R, Update=U, Destroy=D, List=L")
+    selection=input("Create=C, Read=R, Update=U, Destroy=D, List=L, Select=S")
     if selection=="C":
         addition=input("Input new item.")
         create(addition)
@@ -48,5 +52,13 @@ while running:
         print("Destroyed!")
     elif selection=="L":
         list_all_items()
+    elif selection=="S":
+        index=int(input("Enter the index of the item you want to select, with the first item being 0."))
+        print("Item selected.")
+        response=input(("Would you like to mark this item as complete? Y/N"))
+        if response=="Y":
+            mark_complete(index)
+        else:
+            print("Item not marked as complete.")
     else:
         print("Invalid command.")
