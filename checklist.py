@@ -35,16 +35,15 @@ while running:
         create(addition)
         print("Added!")
     elif selection=="R":
-        index="Enter the index of the item you want to read, with the first item being 0."
-        read(index)
-        print("Removed!")
+        index=int(input("Enter the index of the item you want to read, with the first item being 0."))
+        print(read(index))
     elif selection=="U":
-        index="Enter the index of the item you want to update, with the first item being 0."
-        replacement="What do you want to replace it with?"
+        index=int(input("Enter the index of the item you want to update, with the first item being 0."))
+        replacement=input("What do you want to replace it with?")
         update(index,replacement)
         print("Updated!")
     elif selection=="D":
-        index="Enter the index of the item you want to destroy, with the first item being 0."
+        index=int(input("Enter the index of the item you want to destroy, with the first item being 0."))
         destroy(index)
         print("Destroyed!")
     elif selection=="L":
