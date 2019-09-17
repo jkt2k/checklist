@@ -17,6 +17,28 @@ def list_all_items():
     for list_item in checklist:
         print(list_item)
 
+def select(index, response):
+    selected=True
+    while selected:
+        if response=="M":
+            mark_complete(index)
+            print("Item marked as complete!")
+            selected=False
+        elif response=="R":
+            print(read(index))
+            selected=False
+        elif response=="U":
+            replacement=input("What do you want to replace it with?")
+            update(index,replacement)
+            print("Updated!")
+            selected=False
+        elif response=="D":
+            destroy(index)
+            print("Destroyed!")
+            selected=False
+        else:
+            print("Invalid command")
+
 def mark_complete(index):
     checklist[index]=checklist[index]+" [Complete]"
 
@@ -52,28 +74,9 @@ while running:
     elif selection=="L":
         list_all_items()
     elif selection=="S":
-        selected=True
-        while selected:
-            index=int(input("Enter the index of the item you want to select, with the first item being 0."))
-            print("Item selected.")
-            response=input("Create=C, Read=R, Update=U, Destroy=D, Mark Complete=M")
-            if response=="M":
-                mark_complete(index)
-                print("Item marked as complete!")
-                selected=False
-            elif response=="R":
-                print(read(index))
-                selected=False
-            elif response=="U":
-                replacement=input("What do you want to replace it with?")
-                update(index,replacement)
-                print("Updated!")
-                selected=False
-            elif response=="D":
-                destroy(index)
-                print("Destroyed!")
-                selected=False
-            else:
-                print("Invalid command")
+        index=int(input("Enter the index of the item you want to select, with the first item being 0."))
+        print("Item selected.")
+        response=input("Read=R, Update=U, Destroy=D, Mark Complete=M")
+        select(index,response)
     else:
         print("Invalid command.")
